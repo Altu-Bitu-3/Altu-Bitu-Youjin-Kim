@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <sstream>
 
 typedef struct POINT{ //점 구조체 생성
     int x;
@@ -10,19 +9,6 @@ typedef struct POINT{ //점 구조체 생성
 
 using namespace std;
 vector<point> arr, sorted;
-
-vector<string> splitString(string n, vector<string> x){ //ss 이용해서 split 함수 구현
-    istringstream ss;
-    string stringBuffer;
-    
-    ss.str(n);
-
-    while(getline(ss, stringBuffer, ' ')) {
-        x.push_back(stringBuffer);
-    }
-
-    return x;
-}
 
 point newPoint(int a, int b) { //새로운 구조체에 값 추가
     point newPoint;
@@ -43,7 +29,7 @@ void merge(int start, int mid, int end) {
             sorted[k++] = arr[p1++];
         }
         else {
-            if(arr[p1].x < arr[p2].x) {
+            if(arr[p1].y == arr[p2].y && arr[p1].x < arr[p2].x) {
                 sorted[k++] = arr[p1++];
             }
             else{
@@ -85,16 +71,12 @@ int main() {
         string n;
 
         int newX, newY = 0;
-        getline(cin, n);
-
-        x = splitString(n, x);
-
-        newX = stoi(x[0]);
-        newY = stoi(x[1]);
+        cin >> newX >> newY;
 
         arr.push_back(newPoint(newX, newY)); 
     }
 
+    sorted = arr;
     mergeSort(0, length-1);
     for (int i=0; i<length; i++) {
         cout << arr[i].x << " " << arr[i].y << "\n";

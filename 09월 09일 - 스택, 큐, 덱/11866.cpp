@@ -1,17 +1,16 @@
 #include <iostream>
-#include <deque>
 #include <queue>
 
 using namespace std;
 
 int main () {
     int n, k;
-    deque <int> joseph;
+    queue <int> joseph;
     queue <int> sorted;
 
     cin >> n >> k;
     for (int i=1; i<=n; i++) {
-        joseph.push_back(i);
+        joseph.push(i);
     } //초기 배열 생성 
     
     while (joseph.empty() == false) {
@@ -19,12 +18,12 @@ int main () {
         for (int i=0; i<(k-1); i++) {
             temp = joseph.front();
             
-            joseph.push_back(temp);
-            joseph.pop_front();
+            joseph.push(temp);
+            joseph.pop();
             }
         
         temp = joseph.front();
-        joseph.pop_front();
+        joseph.pop();
         
         sorted.push(temp);
     }

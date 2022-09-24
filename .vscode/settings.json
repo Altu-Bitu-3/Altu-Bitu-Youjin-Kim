@@ -8,6 +8,10 @@
         "xutility": "cpp",
         "iostream": "cpp",
         "iosfwd": "cpp",
+        "deque": "cpp",
+        "stack": "cpp",
+        "list": "cpp",
+        "queue": "cpp",
         "utility": "cpp"
     }
 }
